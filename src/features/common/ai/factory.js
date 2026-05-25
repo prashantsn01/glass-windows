@@ -71,6 +71,21 @@ const PROVIDERS = {
       llmModels: [], // Dynamic models populated from installed Ollama models
       sttModels: [], // Ollama doesn't support STT yet
   },
+  'nvidia-nim': {
+      name: 'NVIDIA NIM',
+      handler: () => require("./providers/nvidia_nim"),
+      llmModels: [
+          { id: 'meta/llama-3.1-70b-instruct',       name: 'Llama 3.1 70B Instruct' },
+          { id: 'meta/llama-3.1-8b-instruct',        name: 'Llama 3.1 8B Instruct' },
+          { id: 'meta/llama-3.3-70b-instruct',       name: 'Llama 3.3 70B Instruct' },
+          { id: 'nvidia/llama-3.1-nemotron-70b-instruct', name: 'Nemotron 70B Instruct' },
+          { id: 'microsoft/phi-3-medium-128k-instruct', name: 'Phi-3 Medium 128K' },
+          { id: 'google/gemma-2-27b-it',             name: 'Gemma 2 27B IT' },
+          { id: 'mistralai/mistral-large-2-instruct', name: 'Mistral Large 2' },
+          { id: 'nvidia/vila',                        name: 'NVIDIA VILA (Vision)' },
+      ],
+      sttModels: [],
+  },
   'whisper': {
       name: 'Whisper (Local)',
       handler: () => {
@@ -158,7 +173,8 @@ function getProviderClass(providerId) {
         'gemini': 'GeminiProvider',
         'deepgram': 'DeepgramProvider',
         'ollama': 'OllamaProvider',
-        'whisper': 'WhisperProvider'
+        'whisper': 'WhisperProvider',
+        'nvidia-nim': 'NvidiaNimProvider',
     };
     
     const className = classNameMap[actualProviderId];
