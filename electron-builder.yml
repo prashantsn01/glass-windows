@@ -46,11 +46,6 @@ win:
         - target: portable
           arch: x64
     requestedExecutionLevel: asInvoker
-    signAndEditExecutable: true
-    cscLink: build\certs\glass-dev.pfx
-    cscKeyPassword: "${env.CSC_KEY_PASSWORD}"
-    signtoolOptions:
-      certificateSubjectName: "Glass Dev Code Signing"
 
 # NSIS installer configuration for Windows
 nsis:
@@ -64,11 +59,8 @@ nsis:
 
 # macOS specific configuration
 mac:
-    # The application category type
     category: public.app-category.utilities
-    # Path to the .icns icon file
     icon: src/ui/assets/logo.icns
-    # Minimum macOS version (supports both Intel and Apple Silicon)
     minimumSystemVersion: '11.0'
     hardenedRuntime: true
     entitlements: entitlements.plist
